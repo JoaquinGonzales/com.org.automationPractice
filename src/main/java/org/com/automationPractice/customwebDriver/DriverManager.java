@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
-    private static DriverManager instance=null;
+    private static DriverManager instance;
     private WebDriver driver;
     private WebDriverWait driverWait;
     private static final String BASE_URL = "http://todo.ly/";
@@ -18,13 +18,14 @@ public class DriverManager {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        goTo();
     }
 
     public WebDriver getWebDriver()
     {
         return driver;
     }
-    public void init()
+    public void goTo()
     {
         driver.get(BASE_URL);
     }
@@ -33,7 +34,8 @@ public class DriverManager {
     {
         if (instance == null)
         {
-            new DriverManager();
+            instance = new DriverManager();
+            System.out.println("creating instance!!!");
         }
         return instance;
     }

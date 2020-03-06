@@ -1,10 +1,18 @@
-import org.com.automationPractice.customwebDriver.DriverManager;
+import org.com.automationPractice.Pages.LoginPage;
+import org.testng.annotations.Test;
+
 
 
 public class DriverManagerTest {
 
-    public static void main(String[] args) {
-        DriverManager.getInstance();
 
+    @Test
+    public void testLoginPage()
+    {
+        LoginPage loginPage = new LoginPage();
+        loginPage.clickLoginIcon();
+        loginPage.sendUserNameValue("joaquinjqn2@gmail.com");
+        loginPage.sendUserPassword("Pass1234");
+        loginPage.clickLoginButton();
     }
 }
